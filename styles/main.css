@@ -90,7 +90,6 @@ ul li:before {
 .main-container {
   width: 100vw;
   margin-bottom: auto;
-  display: flex;
 }
 
 .link-container {
@@ -184,6 +183,12 @@ ul li:before {
   font-size: 1rem;
 }
 
+.blog-container {
+  width: 100vw;
+  margin-bottom: auto;
+  display: flex;
+}
+
 .blog-content {
   margin: auto;
   padding-top: 1rem;
@@ -197,6 +202,14 @@ ul li:before {
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 0;
+}
+
+.blog-content-technical h2 {
+  color: var(--technical-color);
+}
+
+.blog-content-cultural h2 {
+  color: var(--cultural-color);
 }
 
 .blog-content h3 {
