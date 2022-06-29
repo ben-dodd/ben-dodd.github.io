@@ -5,8 +5,10 @@ body {
   --cultural-color: hsl(130, 50%, 30%);
   --technical-color: hsl(281, 50%, 30%);
   font-family: 'Concert One', cursive;
-  font-size: 3vmin;
+  font-size: 3.5vmin;
   margin: 0px;
+  height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
 }
 
@@ -76,7 +78,7 @@ ul li:before {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .title-header-cultural {
@@ -90,6 +92,7 @@ ul li:before {
 .main-container {
   width: 100vw;
   margin-bottom: auto;
+  overflow-y: scroll;
 }
 
 .link-container {
@@ -187,6 +190,7 @@ ul li:before {
   width: 100vw;
   margin-bottom: auto;
   display: flex;
+  overflow-y: scroll;
 }
 
 .blog-content {
