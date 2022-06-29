@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+body {
+  font-family: 'Concert One', cursive;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.flex-container {
+  height: 100vh;
+  width: 100vw;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 10vh;
+  padding: 0.5em;
+  background-size: 800% 100%;
+  background-image: linear-gradient(45deg, #7b3294, #c2a5cf, #a6dba0, #008837);
+  color: #f7f7f7;
+  animation-name: gradient;
+  animation-duration: 8s;
+  animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation-iteration-count: infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.title-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+}
+
+.main-container {
+  width: 100vw;
+  margin-bottom: auto;
+}
+
+.link-container {
+  background-size: 200% 100%;
+  padding: 1rem;
+  margin: 1rem 0rem;
+  background-position: 100% 0%;
+  line-height: 0.5rem;
+}
+
+.link-container:hover {
+  animation-name: link;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+.link-container-technical {
+  background-image: linear-gradient(90deg, white, #c2a5cf, #c268ec);
+  animation-direction: reverse;
+  background-position: 0% 0%;
+}
+
+.link-container-cultural {
+  background-image: linear-gradient(90deg, rgb(63, 255, 95), #a6dba0, white);
+  text-align: right;
+}
+
+.sprint-text {
+  color: rgb(235, 235, 235);
+  font-size: 1rem;
+}
+
+@keyframes link {
+  0% {
+    background-position: 100% 0%;
+    transform: scale(1);
+  }
+  100% {
+    background-position: 0% 0%;
+    transform: scale(1.01);
+  }
+}
+
+/* .sidebar {
+  background-color: white;
+  padding: 0.5em;
+  width: minmax(200px, 30vw);
+} */
+
+.main-text {
+  flex: auto;
+  background-color: #f7f7f7;
+  padding: 0.5em;
+}
+
+.footer {
+  font-size: 12px;
+  padding: 0.5em;
+  background-color: white;
+}
