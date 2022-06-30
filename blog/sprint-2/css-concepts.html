@@ -19,8 +19,83 @@
       </header>
       <div class="blog-container">
         <div class="blog-content blog-content-technical">
-          <h2>what is a margin?</h2>
-          <h3>what is it?</h3>
+          <h2>inline vs inline-block?</h2>
+          <p>
+            In CSS, the <small><strong>DISPLAY</strong></small> property
+            specifies the type of rendering box of an element.
+          </p>
+          <p>
+            The most common display types are
+            <small><strong>BLOCK</strong></small
+            >, <small><strong>INLINE</strong></small> and
+            <small><strong>INLINE-BLOCK</strong></small
+            >.
+          </p>
+          <p>
+            The browser will assign default display properties to elements, but
+            these can be changed in CSS.
+          </p>
+          <h3>block vs inline</h3>
+          <p>
+            <small><strong>BLOCK</strong></small> display is used for elements
+            that should be laid out one after the other (like a stack of
+            blocks). Things that are block by default include container elements
+            like &lt;div&gt;, &lt;section&gt; and &lt;p&gt;; headings like
+            &lt;h1&gt; and &lt;h2&gt;; and others like &lt;ul&gt;, &lt;form&gt;
+            and &lt;hr&gt;.
+          </p>
+          <p>
+            <small><strong>INLINE</strong></small> display is used for elements
+            that should follow after eachother on a line. Things that are inline
+            by default include text styling elements like &lt;em&gt;,
+            &lt;small&gt; and &lt;strong&gt;; media like &lt;img&gt; and
+            &lt;embed&gt;; and &lt;span&gt;.
+          </p>
+          <h3>so why is there inline-block?</h3>
+          <p>
+            <small><strong>INLINE</strong></small> display has some limitations.
+            For example:
+          </p>
+          <pre class="css-code">
+            .inline-element {
+              /* DIV 1 */
+              display: inline;
+              background-color: hsl(281, 30%, 74%);
+              border: 5px dotted hsl(130, 100%, 62%);
+              /* DIV 2 adds height and width */
+              height: 100px;
+              width: 200px;
+              /* DIV 3 adds margin */
+              margin: 50px;
+              /* DIV 4 adds padding */
+              padding: 20px;
+            }
+          </pre>
+          <div class="css-example-container">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="css-example-inline-1">DIV-1</div>
+            Omnis aut consequuntur est quas inventore similique iure!
+            <div class="css-example-inline-2">DIV-2</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="css-example-inline-3">DIV-3</div>
+            Repellendus at molestiae distinctio facere saepe, quae nulla
+            veritatis maxime doloribus mollitia vel esse sit architecto?
+            <div class="css-example-inline-4">DIV-4</div>
+          </div>
+          <p>
+            The same example using <small><strong>INLINE-BLOCK</strong></small>
+          </p>
+          <div class="css-example-container">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="css-example-inline-block-1">DIV-1</div>
+            Omnis aut consequuntur est quas inventore similique iure!
+            <div class="css-example-inline-block-1">DIV-2</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="css-example-inline-block-3">DIV-3</div>
+            Repellendus at molestiae distinctio facere saepe, quae nulla
+            veritatis maxime doloribus mollitia vel esse sit architecto?
+            <div class="css-example-inline-block-4">DIV-4</div>
+          </div>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             Consequuntur sapiente commodi ducimus reprehenderit eum obcaecati
@@ -35,7 +110,7 @@
             consequuntur! Eligendi, laborum sequi?
           </p>
         </div>
-        <div class="sidebar"></div>
+        <!-- <div class="sidebar"></div> -->
       </div>
       <footer class="footer">© ben dodd 2022</footer>
     </div>

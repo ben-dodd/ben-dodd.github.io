@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
 
 body {
   --cultural-color: hsl(130, 50%, 30%);
@@ -144,11 +143,9 @@ ul li:before {
 @keyframes link {
   0% {
     background-position: 100% 0%;
-    /* transform: scale(1); */
   }
   100% {
     background-position: 0% 0%;
-    /* transform: scale(1.01); */
   }
 }
 
@@ -174,16 +171,12 @@ ul li:before {
 
 @keyframes keywords {
   0% {
-    /* transform: scale(1); */
     opacity: 0%;
   }
   50% {
-    /* transform: scale(4); */
-    /* transform: translateY(-20px); */
     opacity: 20%;
   }
   100% {
-    /* transform: scale(1); */
     opacity: 0%;
   }
 }
@@ -196,43 +189,39 @@ ul li:before {
 .blog-container {
   width: 100vw;
   margin-bottom: auto;
-  display: flex;
   overflow-y: scroll;
 }
 
 .blog-content {
   margin: auto;
   padding-top: 1rem;
-  max-width: 60ch;
-  font-weight: 100;
-  font-size: 1rem;
-  text-transform: lowercase;
+  padding: 1rem;
+  max-width: 40ch;
 }
 
 .blog-content h2 {
   font-weight: 600;
-  font-size: 2rem;
   margin-bottom: 0;
 }
 
 .blog-content-technical h2 {
-  color: var(--technical-color);
+  color: hsl(281, 80%, 62%);
 }
 
 .blog-content-cultural h2 {
-  color: var(--cultural-color);
+  color: hsl(130, 80%, 62%);
 }
 
 .blog-content h3 {
   margin-top: 2rem;
   margin-bottom: 0;
-  font-size: 1.2rem;
 }
 
 .blog-content p {
   margin-top: 0.5rem;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  line-height: 1.5rem;
+  font-family: 'Source Serif Pro', serif;
+  color: hsl(0, 0%, 56%);
+  font-size: 1rem;
 }
 
 .main-text {
@@ -244,11 +233,182 @@ ul li:before {
 .sidebar {
   background-color: white;
   padding: 1rem;
-  width: minmax(200px, 30vw);
+  min-width: 30vw;
+  padding-top: 2rem;
+}
+
+.sidebar h2 {
+  font-size: 2rem;
+}
+
+#myers-briggs-list {
+  display: block;
+}
+
+#myers-briggs-bars {
+  display: block;
+}
+
+.myers-briggs-bar-container {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-image: linear-gradient(
+    30deg,
+    hsl(130, 100%, 62%),
+    hsl(130, 45%, 74%),
+    hsl(130, 80%, 90%)
+  );
+  font-size: 1rem;
+}
+
+.myers-briggs-bar {
+  background-size: 200% 100%;
+  background-image: linear-gradient(
+    30deg,
+    hsl(281, 45%, 74%),
+    hsl(281, 100%, 62%),
+    hsl(281, 100%, 32%)
+  );
+  background-position: 0% 0%;
+  padding: 0.2rem;
+  color: hsl(281, 50%, 30%);
+  animation: myers-briggs-bar 3s linear infinite;
+}
+
+@keyframes myers-briggs-bar {
+  0% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.myers-briggs-percent {
+  color: hsl(0, 0%, 100%);
+  font-size: 0.8rem;
+}
+
+.css-code {
+  background-color: azure;
+  font-size: 1rem;
+}
+
+.css-example-container {
+  background-color: hsl(130, 30%, 74%);
+  border-radius: 12px;
+  padding: 2rem;
+  font-size: 1rem;
+}
+
+.css-example-inline-1 {
+  display: inline;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+}
+
+.css-example-inline-2 {
+  display: inline;
+  height: 100px;
+  width: 200px;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+}
+
+.css-example-inline-3 {
+  display: inline;
+  height: 100px;
+  width: 200px;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+  margin: 50px;
+}
+
+.css-example-inline-4 {
+  /* DIV 1 */
+  display: inline;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+  /* DIV 2 adds height and width */
+  height: 100px;
+  width: 200px;
+  /* DIV 3 adds margin */
+  margin: 50px;
+  /* DIV 4 adds padding */
+  padding: 20px;
+}
+
+.css-example-inline-block-1 {
+  display: inline-block;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+}
+
+.css-example-inline-block-2 {
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+}
+
+.css-example-inline-block-3 {
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  background-color: hsl(281, 30%, 74%);
+  border: 5px dotted hsl(130, 100%, 62%);
+  margin: 50px;
+}
+
+.css-example-inline-block-4 {
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  background-color: hsl(281, 30%, 74%);
+  padding: 20px;
+  border: 5px dotted hsl(130, 100%, 62%);
+  margin: 50px;
 }
 
 .footer {
   font-size: 12px;
   padding: 0.5em;
   background-color: white;
+}
+
+@media (min-width: 321px) {
+  /* .blog-content {
+    background-color: yellow;
+  } */
+}
+
+@media (min-width: 769px) {
+  #myers-briggs-list {
+    display: none;
+  }
+
+  #myers-briggs-bars {
+    display: block;
+  }
+}
+
+@media (min-width: 993px) {
+  .blog-container {
+    display: flex;
+  }
+}
+
+@media (min-width: 1201px) {
+  #myers-briggs-list {
+    display: block;
+  }
+
+  #myers-briggs-bars {
+    display: block;
+  }
 }
