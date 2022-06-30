@@ -5,11 +5,10 @@ body {
   --cultural-color: hsl(130, 50%, 30%);
   --technical-color: hsl(281, 50%, 30%);
   font-family: 'Concert One', cursive;
-  font-size: 3.5vmin;
+  font-size: clamp(16px, 3.5vw, 2em);
   margin: 0px;
   height: 100vh;
   width: 100vw;
-  box-sizing: border-box;
 }
 
 a {
@@ -85,9 +84,17 @@ ul li:before {
   color: var(--cultural-color);
 }
 
+/* .title-header-cultural:hover {
+  text-shadow: 0 0 16px var(--cultural-color);
+} */
+
 .title-header-technical {
   color: var(--technical-color);
 }
+
+/* .title-header-technical:hover {
+  text-shadow: 0 0 16px var(--technical-color);
+} */
 
 .main-container {
   width: 100vw;
