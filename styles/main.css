@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
-
+html {
+  font-size: minmax(16px, 3.5vw);
+}
 body {
   --cultural-color: hsl(130, 50%, 30%);
   --technical-color: hsl(281, 50%, 30%);
   font-family: 'Concert One', cursive;
-  font-size: clamp(16px, 3.5vw, 2em);
+  /* font-size: clamp(16px, 3.5vw, 2em); */
   margin: 0px;
-  height: 100vh;
-  width: 100vw;
+  /* height: 100vh;
+  width: 100vw; */
 }
 
 a {
@@ -41,6 +43,7 @@ ul li:before {
 .header {
   padding: 0.5em;
   background-size: 800% 100%;
+  /* font-size: 2rem; */
   background-image: linear-gradient(
     45deg,
     hsl(281, 49%, 39%),
@@ -76,7 +79,7 @@ ul li:before {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem;
-  font-size: 1em;
+  /* font-size: 3rem; */
 }
 
 .title-header-cultural {
@@ -156,7 +159,7 @@ ul li:before {
   width: 100%;
   top: 50%;
   color: white;
-  font-size: 8rem;
+  font-size: 3rem;
   font-family: 'Sacramento', cursive;
   text-align: center;
   position: absolute;
@@ -183,7 +186,7 @@ ul li:before {
 
 .sprint-text {
   color: rgb(235, 235, 235);
-  font-size: 1rem;
+  /* font-size: 1rem; */
 }
 
 .blog-container {
@@ -221,7 +224,7 @@ ul li:before {
   margin-top: 0.5rem;
   font-family: 'Source Serif Pro', serif;
   color: hsl(0, 0%, 56%);
-  font-size: 1rem;
+  /* font-size: 1rem; */
 }
 
 .main-text {
@@ -238,7 +241,7 @@ ul li:before {
 }
 
 .sidebar h2 {
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 
 #myers-briggs-list {
@@ -259,7 +262,7 @@ ul li:before {
     hsl(130, 45%, 74%),
     hsl(130, 80%, 90%)
   );
-  font-size: 1rem;
+  /* font-size: 1rem; */
 }
 
 .myers-briggs-bar {
@@ -290,19 +293,19 @@ ul li:before {
 
 .myers-briggs-percent {
   color: hsl(0, 0%, 100%);
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
 }
 
 .css-code {
   background-color: azure;
-  font-size: 1rem;
+  /* font-size: 1rem; */
 }
 
 .css-example-container {
   background-color: hsl(130, 30%, 74%);
   border-radius: 12px;
   padding: 2rem;
-  font-size: 1rem;
+  /* font-size: 1rem; */
 }
 
 .css-example-inline-1 {
