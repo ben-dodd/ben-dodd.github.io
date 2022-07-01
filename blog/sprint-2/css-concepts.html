@@ -51,66 +51,211 @@
             &lt;small&gt; and &lt;strong&gt;; media like &lt;img&gt; and
             &lt;embed&gt;; and &lt;span&gt;.
           </p>
-          <h3>so why is there inline-block?</h3>
+          <h3>so what's wrong with inline?</h3>
           <p>
             <small><strong>INLINE</strong></small> display has some limitations.
-            For example:
-          </p>
-          <pre class="css-code">
-            .inline-element {
-              /* DIV 1 */
-              display: inline;
-              background-color: hsl(281, 30%, 74%);
-              border: 5px dotted hsl(130, 100%, 62%);
-              /* DIV 2 adds height and width */
-              height: 100px;
-              width: 200px;
-              /* DIV 3 adds margin */
-              margin: 50px;
-              /* DIV 4 adds padding */
-              padding: 20px;
-            }
-          </pre>
-          <div class="css-example-container">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            <div class="css-example-inline-1">DIV-1</div>
-            Omnis aut consequuntur est quas inventore similique iure!
-            <div class="css-example-inline-2">DIV-2</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <div class="css-example-inline-3">DIV-3</div>
-            Repellendus at molestiae distinctio facere saepe, quae nulla
-            veritatis maxime doloribus mollitia vel esse sit architecto?
-            <div class="css-example-inline-4">DIV-4</div>
-          </div>
-          <p>
-            The same example using <small><strong>INLINE-BLOCK</strong></small>
+            For example, here we have a simple paragraph with an inline element.
+            The element has a background colo(u)r and a border.
           </p>
           <div class="css-example-container">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            <div class="css-example-inline-block-1">DIV-1</div>
-            Omnis aut consequuntur est quas inventore similique iure!
-            <div class="css-example-inline-block-1">DIV-2</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <div class="css-example-inline-block-3">DIV-3</div>
-            Repellendus at molestiae distinctio facere saepe, quae nulla
-            veritatis maxime doloribus mollitia vel esse sit architecto?
-            <div class="css-example-inline-block-4">DIV-4</div>
+            <pre class="css-code">
+.inline-element {
+  display: inline;
+  background-color: orange;
+  border: 3px dotted yellow;
+}
+          </pre
+            >
+            <div class="css-example">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              <div class="css-example-inline">aut</div>
+              consequuntur est quas inventore similique iure!
+            </div>
           </div>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Consequuntur sapiente commodi ducimus reprehenderit eum obcaecati
-            quis sed, quia quaerat velit culpa necessitatibus neque molestias
-            natus facere? At quaerat minus aliquam.
+            OK, that looks fine. What if we wanted to give those words a bit
+            more space by adding height and width?
           </p>
-          <h3>and more discussion</h3>
+          <div class="css-example-container">
+            <pre class="css-code">
+.inline-element {
+  display: inline;
+  background-color: orange;
+  border: 3px dotted yellow;
+  height: 100px;
+  width: 200px;
+}
+          </pre
+            >
+            <div class="css-example">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              <div class="css-example-inline css-example-height-width">aut</div>
+              consequuntur est quas inventore similique iure!
+            </div>
+          </div>
+          <div class="text-reveal-container">
+            <p>Nothing happened...........</p>
+            <div class="text-revealer"></div>
+          </div>
+          <p>Hmmm... How about using margin?</p>
+          <div class="css-example-container">
+            <pre class="css-code">
+.inline-element {
+  display: inline;
+  background-color: orange;
+  border: 3px dotted yellow;
+  margin: 50px;
+}
+          </pre
+            >
+            <div class="css-example">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              <div class="css-example-inline css-example-margin">aut</div>
+              consequuntur est quas inventore similique iure!
+            </div>
+          </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Repudiandae, aut, fuga impedit aliquam atque dolore ducimus modi
-            quidem necessitatibus natus repellat, ab error alias hic consectetur
-            consequuntur! Eligendi, laborum sequi?
+            That's only added a margin on the left and right... No vertical
+            margins are applied. Padding?
+          </p>
+          <div class="css-example-container">
+            <pre class="css-code">
+.inline-element {
+  display: inline;
+  background-color: orange;
+  border: 3px dotted yellow;
+  padding: 50px;
+}
+          </pre
+            >
+            <div class="css-example">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              <div class="css-example-inline css-example-padding">aut</div>
+              consequuntur est quas inventore similique iure!
+            </div>
+          </div>
+          <p>OK, so we can't...</p>
+          <ul>
+            <li>add height</li>
+            <li>add width</li>
+            <li>add vertical margins</li>
+          </ul>
+          <p>
+            ...to an <small><strong>INLINE</strong></small> element. And padding
+            is doing something weird.
+            <small><strong>INLINE-BLOCK</strong></small
+            >, in contrast, applies height, width, margins, and padding as you
+            would expect from a <small><strong>BLOCK</strong></small> element.
+            Unlike a <small><strong>BLOCK</strong></small> element, the
+            <small><strong>INLINE-BLOCK</strong></small> element is place
+            in-line, rather than placed below the previous element.
+          </p>
+          <div class="css-example-container">
+            <pre class="css-code">
+.inline-element {
+  display: inline-block;
+  background-color: orange;
+  border: 3px dotted yellow;
+  padding: 50px;
+}
+          </pre
+            >
+            <div class="css-example">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              <div class="css-example-inline-block css-example-padding">
+                aut
+              </div>
+              consequuntur est quas inventore similique iure!
+            </div>
+          </div>
+          <h3>where do we use inline-block?</h3>
+          <p>
+            It is not immediately obvious why we need
+            <small><strong>INLINE-BLOCK</strong></small
+            >. But we might get some idea from the elements that are
+            <small><strong>INLINE-BLOCK</strong></small> by default. In all main
+            browsers, this includes &lt;button&gt; and &lt;select&gt;. Chrome
+            and Internet Explorer add &lt;input&gt; and &lt;textarea&gt; to this
+            list.
+          </p>
+          <p>
+            Let's try illustrate the use of
+            <small><strong>INLINE-BLOCK</strong></small> with a game of Mad
+            Libs.
+          </p>
+          <div class="css-example-madlibs">
+            <p>
+              Hello, my name is Astronaut
+              <select class="css-example-select-inline">
+                <option value="">--name--</option>
+                <option>Emily</option>
+                <option>Klaus</option>
+                <option>Donovan</option>
+                <option>Priscilla</option>
+                <option>Gregg</option>
+                <option>Simone</option>
+                <option>Taika</option></select
+              >. I am on my way to
+              <select class="css-example-select-inline">
+                <option value="">--silly-word--</option>
+                <option>Trounce</option>
+                <option>Califont</option>
+                <option>Pardon</option>
+                <option>Buckwheat</option>
+                <option>Panopticon</option>
+                <option>Mumps</option>
+                <option>Twig</option></select
+              >. I will be gone for
+              <select class="css-example-select-inline">
+                <option value="">--number--</option>
+                <option>3</option>
+                <option>42</option>
+                <option>7</option>
+                <option>500</option>
+                <option>98</option>
+                <option>11</option>
+                <option>1,000,000</option>
+              </select>
+              days. I am feeling
+              <select class="css-example-select-inline">
+                <option value="">--feeling--</option>
+                <option>moody</option>
+                <option>agitated</option>
+                <option>blissful</option>
+                <option>embarrassed</option>
+                <option>surprised</option>
+                <option>thrilled</option>
+                <option>uneasy</option>
+              </select>
+              about the trip and will miss my
+              <select class="css-example-select-inline">
+                <option value="">--noun--</option>
+                <option>rabbit</option>
+                <option>PlayStation 4</option>
+                <option>9-to-5</option>
+                <option>cousin Greg</option>
+                <option>toupée</option>
+                <option>country</option>
+                <option>Eagle Eye Cherry CD</option></select
+              >.
+            </p>
+          </div>
+          <p>
+            Here we have been able to use some padding and margins to the
+            <small><strong>INLINE-BLOCK</strong></small> elements. This would
+            not be possible with a display of
+            <small><strong>INLINE</strong></small
+            >.
+          </p>
+          <p>
+            Another reason you would use
+            <small><strong>INLINE-BLOCK</strong></small> is if you want an
+            inline element to
+            <span class="css-example-transform">transform</span>. Plain old
+            <small><strong>INLINE</strong></small> elements cannot
+            <span class="css-example-transform-inline">transform</span>.
           </p>
         </div>
-        <!-- <div class="sidebar"></div> -->
       </div>
       <footer class="footer">© ben dodd 2022</footer>
     </div>
