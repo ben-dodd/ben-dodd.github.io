@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
 html {
-  font-size: 2.8vw;
+  font-size: 3vw;
 }
 
 body {
@@ -16,6 +16,14 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
+}
+
+select {
+  font-size: 1rem;
+}
+
+select > option {
+  font-size: 1rem;
 }
 
 a {
@@ -45,7 +53,7 @@ ul li:before {
   justify-content: space-between;
 }
 
-.header {
+header {
   padding: 0.5em;
   background-size: 800% 100%;
   background-image: linear-gradient(
@@ -389,7 +397,7 @@ ul li:before {
   }
 }
 
-.footer {
+footer {
   font-size: 0.8rem;
   padding: 0.5rem;
   background-color: white;
@@ -429,5 +437,41 @@ ul li:before {
 
   #myers-briggs-bars {
     display: block;
+  }
+}
+
+@media (hover: none) {
+  .link-container {
+    background-size: 100%;
+  }
+
+  .link-container-technical {
+    background-image: linear-gradient(
+      90deg,
+      hsl(281, 45%, 74%),
+      hsl(281, 0%, 100%)
+    );
+  }
+
+  .link-container-cultural {
+    background-image: linear-gradient(
+      90deg,
+      hsl(130, 0%, 100%),
+      hsl(130, 45%, 74%)
+    );
+  }
+}
+
+@media (max-height: 767px) and (orientation: landscape) {
+  header > h1 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  footer {
+    font-size: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
   }
 }
