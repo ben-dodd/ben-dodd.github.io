@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
 html {
-  font-size: calc(15px + 0.390625vw);
+  font-size: 2.5vw;
 }
+
 body {
   --cultural-color: hsl(130, 50%, 30%);
   --technical-color: hsl(281, 50%, 30%);
@@ -379,9 +380,6 @@ ul li:before {
 }
 
 @media (min-width: 321px) {
-  /* .blog-content {
-    background-color: yellow;
-  } */
 }
 
 @media (min-width: 769px) {
@@ -395,12 +393,20 @@ ul li:before {
 }
 
 @media (min-width: 993px) {
+  html {
+    font-size: 1.5vw;
+  }
+
   .blog-container {
     display: flex;
   }
 }
 
 @media (min-width: 1201px) {
+  html {
+    font-size: 1.2vw;
+  }
+
   #myers-briggs-list {
     display: block;
   }
