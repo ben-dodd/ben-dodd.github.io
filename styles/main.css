@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
 html {
-  font-size: minmax(16px, 3.5vw);
+  font-size: 2vw;
 }
 body {
   --cultural-color: hsl(130, 50%, 30%);
@@ -199,7 +199,7 @@ ul li:before {
   margin: auto;
   padding-top: 1rem;
   padding: 1rem;
-  max-width: 40ch;
+  /* max-width: 40ch; */
 }
 
 .blog-content h2 {
@@ -224,7 +224,7 @@ ul li:before {
   margin-top: 0.5rem;
   font-family: 'Source Serif Pro', serif;
   color: hsl(0, 0%, 56%);
-  /* font-size: 1rem; */
+  font-size: 1rem;
 }
 
 .main-text {
