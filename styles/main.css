@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
 html {
-  font-size: 2vw;
+  font-size: calc(15px + 0.390625vw);
 }
 body {
   --cultural-color: hsl(130, 50%, 30%);
   --technical-color: hsl(281, 50%, 30%);
   font-family: 'Concert One', cursive;
-  /* font-size: clamp(16px, 3.5vw, 2em); */
   margin: 0px;
-  /* height: 100vh;
-  width: 100vw; */
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
 
 a {
@@ -23,7 +28,6 @@ ul {
 
 ul li {
   list-style: none;
-  font-size: 1.2rem;
 }
 
 ul li:before {
@@ -43,7 +47,6 @@ ul li:before {
 .header {
   padding: 0.5em;
   background-size: 800% 100%;
-  /* font-size: 2rem; */
   background-image: linear-gradient(
     45deg,
     hsl(281, 49%, 39%),
@@ -79,7 +82,6 @@ ul li:before {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem;
-  /* font-size: 3rem; */
 }
 
 .title-header-cultural {
@@ -186,7 +188,6 @@ ul li:before {
 
 .sprint-text {
   color: rgb(235, 235, 235);
-  /* font-size: 1rem; */
 }
 
 .blog-container {
@@ -199,7 +200,7 @@ ul li:before {
   margin: auto;
   padding-top: 1rem;
   padding: 1rem;
-  /* max-width: 40ch; */
+  max-width: 60ch;
 }
 
 .blog-content h2 {
@@ -223,8 +224,8 @@ ul li:before {
 .blog-content p {
   margin-top: 0.5rem;
   font-family: 'Source Serif Pro', serif;
-  color: hsl(0, 0%, 56%);
-  font-size: 1rem;
+  color: hsl(0, 0%, 20%);
+  line-height: 1.6rem;
 }
 
 .main-text {
@@ -238,10 +239,6 @@ ul li:before {
   padding: 1rem;
   min-width: 30vw;
   padding-top: 2rem;
-}
-
-.sidebar h2 {
-  /* font-size: 2rem; */
 }
 
 #myers-briggs-list {
@@ -262,7 +259,6 @@ ul li:before {
     hsl(130, 45%, 74%),
     hsl(130, 80%, 90%)
   );
-  /* font-size: 1rem; */
 }
 
 .myers-briggs-bar {
@@ -293,19 +289,17 @@ ul li:before {
 
 .myers-briggs-percent {
   color: hsl(0, 0%, 100%);
-  /* font-size: 0.8rem; */
+  font-size: 0.8rem;
 }
 
 .css-code {
   background-color: azure;
-  /* font-size: 1rem; */
 }
 
 .css-example-container {
   background-color: hsl(130, 30%, 74%);
   border-radius: 12px;
   padding: 2rem;
-  /* font-size: 1rem; */
 }
 
 .css-example-inline-1 {
@@ -379,8 +373,8 @@ ul li:before {
 }
 
 .footer {
-  font-size: 12px;
-  padding: 0.5em;
+  font-size: 0.8rem;
+  padding: 0.5rem;
   background-color: white;
 }
 
