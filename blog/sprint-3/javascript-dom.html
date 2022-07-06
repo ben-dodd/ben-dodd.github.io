@@ -21,14 +21,245 @@
       </header>
       <div class="blog-container">
         <div class="blog-content blog-content-technical">
-          <p><ul><li>Non-technical could mean writing this as if it was a blog post you would have wanted to read when you first started learning these concepts or to a friend who wants a better understanding of what you are learning. You should show examples of code and screenshots to help teach others!</li><li>
-            An analogy to describe JavaScript and its relationship to HTML and CSS.</li><li></li>
-            Explain control flow and loops using an example process from everyday life, for example, 'waking up' or 'brushing your teeth' (but not those).</li><li></li>
-            Describe what the DOM is and an example of how you might interact with it.</li><li></li>
-            Explain the difference between accessing data from arrays and objects.</li><li></li>
-            Explain what functions are and why they are helpful.</li></ul></p>
+          <h2>javascript and its relationship to html and css?</h2>
+          <p>
+            If you've spent much time on the Internet, you've probably seen the
+            words <em>HTML</em>, <em>CSS</em>, and <em>JavaScript</em>. What
+            exactly do these words mean?
+          </p>
+
+          <p>
+            All three are languages used to make websites (don't call HTML and
+            CSS programming languages or some people get mad).
+          </p>
+          <p>
+            HTML stands for HyperText Markup Language. It was invented as a
+            publishing language for the web. Basically, HTML is used to lay out
+            the bones of the website.
+          </p>
+          <ul>
+            <li>The headings</li>
+            <li>The paragraphs</li>
+            <li>The links</li>
+            <li>The images</li>
+          </ul>
+          <p>
+            CSS stands for Cascading Style Sheets. This language is used to
+            define a style for a website. In the old days, you could do a lot of
+            styling without CSS. For example the HTML &lt;font&gt; tag could set
+            attributes like colour, font, and size. However, this and other
+            style-oriented features were removed with HTML5 which came out in
+            2008. Now, the only way to really style your HTML is with CSS.
+          </p>
+          <p>
+            HTML and CSS alone can be used to make simple sites like a small
+            blog or business website. So where does Javascript come in?
+          </p>
+          <p>
+            JavaScript is a powerful <i>programming</i> language that can bring
+            to life an otherwise static website. It is essential if you want a
+            website to be interactive and dynamic. JavaScript can change a
+            website based on input from the user or data from another source.
+            The uses of JavaScript are pretty much endless. 98% of websites
+            today use JavaScript for their browser-end functionality.
+          </p>
+          <h2>control flow and loops</h2>
+          <p>
+            Computer programming is all about giving instructions to the
+            computer. The <em>control flow</em> refers to the order that the
+            computer does these instructions.
+          </p>
+          <p>
+            You can think of the control flow in terms of simple tasks we do
+            every day. The example below shows a (very simplified) long-term
+            task that could be explained with control flow and loops.
+          </p>
+          <pre class="css-code">
+age = 0                         The child is born
+name = "Toby"                   The child is named Toby
+toiletTrained = false           The child is not toilet trained
+                                (by default)
+
+while not toiletTrained         This line tells the computer to
+do every hour {                 do the following code every hour
+                                until the child is toilet
+                                trained  
+
+    check nappies               The nappies are checked
+    if nappies are dirty        If the nappies are dirty, do the
+                                following steps
+      remove dirty nappy
+      clean baby
+      put clean nappy on
+      discard dirty nappy
+      wash hands
+    otherwise
+      set toiletTrained to true Otherwise, the baby is now
+                                toilet-trained!
+                                This breaks out of the
+                                loop
+continue loop
+say "{name} is toilet trained!" The parents are now out of the
+                                toilet-trianing loop and
+                                celebrate with a shout.
+                      </pre
+          >
+          <p>
+            The order that you put instructions in can be a cause of errors in
+            code. For example, what would happen with the last line of the code
+            above if we hadn't set that name to Toby at the start?
+          </p>
+          <h2>the dom</h2>
+          <p>
+            The <em>DOM</em> is short for the Document Object Model. This is the
+            hierarchical representation of a web page. You can think of the DOM
+            like a tree.
+          </p>
+          <p>
+            The earth is like the <code>window</code> element, upon which is
+            planted the <code>document</code>.
+          </p>
+          <p>
+            The DOM organises all elements on the page into a hierarchical
+            structure so they can be accessed and manipulated. If the DOM was a
+            tree, we might want to select all <b>apples</b> or change the colour
+            of the <b>blossoms</b> to purple. Or we might want to chop off a
+            whole branch and everything connected to it.
+          </p>
+          <img src="../../images/tree.jpeg" class="blog-image" />
+          <p>
+            In a similar way, we can select all elements of a similar type (like
+            all paragraphs) or select elements by their id or class. Once
+            selected, we can change the style of the elements, remove them, or
+            add new elements to them.
+          </p>
+          <h2>arrays vs objects</h2>
+          <p>
+            Arrays and objects are two data structures you can use in
+            JavaScript. Both have advantages and disadvantages. It may not
+            always be obvious which one is the best to use for a particular
+            scenario.
+          </p>
+          <h3>Arrays</h3>
+          <p>
+            Arrays are basically just lists of things. This could be a list of
+            strings (text) or numbers, or it could be an array of arrays or an
+            array of objects. Arrays have a number of built-in functions in
+            JavaScript that can be very powerful for easily manipulating sets of
+            data.
+          </p>
+          <p>
+            Arrays store data in an ordered list. Each entry in the list can be
+            selected by using its index (where it is in the list). The first
+            index in an array is always 0.
+          </p>
+          <p>
+            Lets say we have an array of names called
+            <code>firstNames</code> that looks like this:
+          </p>
+          <code>["Jeff","Mike","Brian"]</code>
+          <p>With the indices showing it looks like this.</p>
+          <code>[0: "Jeff", 1: "Mike", 2: "Brian"]</code>
+          <p>
+            To access the third name in the list, we would do:
+            <code>firstNames[2]</code>. We use "2" instead of "3" to get the
+            third name, because the indices start at 0.
+          </p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods"
+            >Check out the Instance Methods for arrays at MDN.</a
+          >
+          <h3>Objects</h3>
+          <p>
+            Objects are data structures that store data in sets of key/value
+            pairs. The object might be a customer at a supermarket that you want
+            to store and track. It might look like this:
+          </p>
+          <pre>
+  const customer = {
+    name: "Greta",
+    age: 47,
+    favouriteItems: ["apples", "bananas", "cheese", "muesli bars"]
+  }
+            </pre
+          >
+          <p>
+            Note how objects use curly braces {} and arrays use square brackets
+            []. This is an important distinction.
+          </p>
+          <p>
+            To access a value in an object, we use the "key" of that value. So
+            to access the name of the customer we go
+            <code>customer.name</code> or to access the age we would use
+            <code>customer.age</code>.
+          </p>
+          <p>
+            Notice the favouriteItems value is an array. To access the second
+            item in that list we would need to use a mix of object and array
+            accessors. This would look like
+            <code>customer.favouriteItems[1]</code>.
+          </p>
+          <h2>functions (and why they are helpful)</h2>
+          <p>
+            Functions are like little sets of instructions. They need to be
+            given a name, and they can also take parameters. Functions are
+            defined with the <code>function</code> keyword. Usually functions
+            will return a value using the <code>return</code> keyword. However,
+            this is not always the case. For example you might have a function
+            that just does an action like pops up an alert to the user. An
+            example of a simple function that adds two numbers is below.
+          </p>
+          <pre>
+    function myAddingFunction(varA, varB) {
+      return varA + varB
+    }
+          </pre>
+          <p>
+            On its own, this function will not do anything. To use the function
+            we need to <em>call</em> it. This could be done like so.
+          </p>
+          <code>let myAddedNumbers = myAddingFunction(5, 10)</code>
+          <p>
+            This bit of code has made a variable <code>myAddedNumbers</code> and
+            assigned to it the return value of
+            <code>myAddingFunction(5, 10)</code>. The value of
+            <code>myAddedNumbers</code> will be 15.
+          </p>
+          <p>
+            The value of functions may not seem that obvious when you are only
+            doing simple arithmetic, but it soon becomes apparent once your
+            project grows.
+          </p>
+          <p>An important principle in software development is DRY.</p>
+          <p><b>DON'T REPEAT YOURSELF</b></p>
+          <p>
+            If we have code that repeats itself, any modification of a task
+            requires it to be modified everywhere it occurs in the code. By
+            writing functions, we can change the task in one place and this will
+            be changed everywhere we use that function.
+          </p>
+          <p>
+            Using functions also makes code easier to read for anyone that has
+            to go through it after us (including our future selves).
+          </p>
+
+          <!-- <div class="css-example-container">
+            <pre class="css-code">
+.inline-element {
+  display: inline;
+  background-color: orange;
+  border: 3px dotted yellow;
+}
+          </pre
+            >
+            <div class="css-example">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              <div class="css-example-inline">aut</div>
+              consequuntur est quas inventore similique iure!
+            </div>
+          </div> -->
         </div>
-        <div class="sidebar"></div>
+        <!-- <div class="sidebar"></div> -->
       </div>
       <footer>© ben dodd 2022</footer>
     </div>
