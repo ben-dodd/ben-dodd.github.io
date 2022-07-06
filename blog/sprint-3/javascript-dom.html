@@ -259,9 +259,59 @@ say "{name} is toilet trained!" The parents are now out of the
             </div>
           </div> -->
         </div>
-        <!-- <div class="sidebar"></div> -->
+        <div class="sidebar">
+          <div class="sidebar-box">
+            <h3>Manipulating the DOM</h3>
+            <p>
+              The box below uses JavaScript to change the HTML and CSS. This is
+              called manipulating the DOM.
+            </p>
+            <p>
+              Enter the text into the box below. Select the colour of the text
+              using the dropdown menu.
+            </p>
+            <input
+              class="css-example-select-inline"
+              style="width: 90%"
+              id="input-box"
+              placeholder="Enter some text..."
+            />
+            <select
+              class="css-example-select-inline"
+              style="width: 100%"
+              id="select-box"
+            >
+              <option value="">--colour--</option>
+              <option>blue</option>
+              <option>green</option>
+              <option>aqua</option>
+              <option>black</option>
+              <option>yellow</option>
+              <option>orange</option>
+              <option>purple</option>
+            </select>
+            <p
+              id="output"
+              class="css-example"
+              style="font-family: monospace"
+            ></p>
+          </div>
+        </div>
       </div>
       <footer>© ben dodd 2022</footer>
     </div>
+    <script>
+      const inputBox = document.getElementById('input-box')
+      const selectBox = document.getElementById('select-box')
+      const outputter = document.getElementById('output')
+      inputBox.addEventListener('input', addInput)
+      selectBox.addEventListener('change', changeColor)
+      function addInput(evt) {
+        outputter.textContent = evt.target.value
+      }
+      function changeColor(evt) {
+        outputter.style.color = evt.target.value
+      }
+    </script>
   </body>
 </html>
