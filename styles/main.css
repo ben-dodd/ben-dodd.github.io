@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
 html {
-  font-size: 4.5vw;
+  font-size: 5vw;
 }
 
 body {
@@ -95,19 +95,25 @@ header {
 
 .title-header-cultural {
   color: var(--cultural-color);
+  padding: 4px;
+  cursor: pointer;
 }
 
-/* .title-header-cultural:hover {
-  text-shadow: 0 0 16px var(--cultural-color);
-} */
+.title-header-cultural:hover {
+  background-color: hsl(130, 30%, 74%);
+  box-shadow: 5px 5px hsl(130, 100%, 62%);
+}
 
 .title-header-technical {
   color: var(--technical-color);
+  padding: 4px;
+  cursor: pointer;
 }
 
-/* .title-header-technical:hover {
-  text-shadow: 0 0 16px var(--technical-color);
-} */
+.title-header-technical:hover {
+  background-color: hsl(281, 30%, 74%);
+  box-shadow: 5px 5px hsl(281, 100%, 62%);
+}
 
 .main-container {
   width: 100vw;
@@ -203,13 +209,16 @@ header {
   width: 100vw;
   margin-bottom: auto;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-content {
   margin: auto;
   padding-top: 1rem;
   padding: 1rem;
-  max-width: 60ch;
+  max-width: min(60ch, 90%);
+  flex: 0 1 80%;
 }
 
 .blog-content h2 {
@@ -249,6 +258,8 @@ header {
   min-width: 30vw;
   padding-top: 2rem;
   padding-bottom: 3rem;
+  width: 100%;
+  flex: 0 1 20%;
 }
 
 .sidebar-box {
@@ -258,6 +269,7 @@ header {
   color: hsl(0, 0%, 20%);
   max-width: 30ch;
   font-size: 1rem;
+  margin: auto;
 }
 
 #myers-briggs-list {
@@ -417,15 +429,15 @@ footer {
   background-color: white;
 }
 
-@media (min-width: 321px) {
+@media (min-width: 320px) {
   html {
-    font-size: 3.5vw;
+    font-size: 5vw;
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   html {
-    font-size: 2vw;
+    font-size: 4vw;
   }
   #myers-briggs-list {
     display: none;
@@ -436,13 +448,13 @@ footer {
   }
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1024px) {
   html {
-    font-size: 1.5vw;
+    font-size: 2vw;
   }
 
   .blog-container {
-    display: flex;
+    flex-direction: row;
   }
 }
 
