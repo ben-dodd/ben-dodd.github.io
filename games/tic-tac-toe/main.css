@@ -1,0 +1,92 @@
+/* Game board and text not responsive yet*/
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&display=swap');
+
+html {
+  /* font-size: 5vw; */
+}
+
+body {
+  font-family: 'Concert One', cursive;
+  margin: 0;
+}
+
+table {
+  margin-right: center;
+  margin-left: center;
+  margin: 0 auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+td {
+  width: 8vw;
+  height: 8vw;
+  text-align: center;
+  font-size: 300%;
+  border: black solid 3px;
+  color: black;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2vw;
+  color: #4c2c92;
+}
+
+.flex-container {
+  height: 100vh;
+  width: 100vw;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.breadcrumb-link {
+  color: hsl(0, 0%, 100%);
+  opacity: 60%;
+}
+
+header {
+  padding: 0.5em;
+  background-size: 800% 100%;
+  background-image: linear-gradient(
+    45deg,
+    hsl(281, 49%, 39%),
+    hsl(281, 30%, 74%),
+    hsl(130, 30%, 74%),
+    hsl(130, 49%, 39%)
+  );
+  color: #f7f7f7;
+  animation-name: gradient;
+  animation-duration: 20s;
+  animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#winner {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.main-container {
+  margin-top: '20px';
+  width: 100vw;
+  padding: auto;
+}
