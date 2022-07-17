@@ -1,13 +1,31 @@
-console.log('Welcome to Tic-Tac-Toe! Enjoy!')
+// Initialise variables
 
-let board = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', ''],
+const initBoard = () =>
+  Array(3)
+    .fill()
+    .map(() =>
+      Array(3)
+        .fill()
+        .map(() => ({ player: '' }))
+    )
+
+const winCombos = [
+  ['00', '01', '02'],
+  ['10', '11', '12'],
+  ['20', '21', '22'],
+  ['00', '10', '20'],
+  ['01', '11', '21'],
+  ['02', '12', '22'],
+  ['00', '11', '22'],
+  ['02', '11', '20'],
 ]
+
+let board = initBoard()
 
 let player = 'O'
 let winner = ''
+
+// Setup event listeners
 
 for (let i = 0; i < 3; i++) {
   for (let j = 0; j < 3; j++) {
@@ -18,18 +36,19 @@ for (let i = 0; i < 3; i++) {
 document.getElementById('init').addEventListener('click', resetBoard)
 
 function clickTile(e) {
-  if (!e) var e = window.event // Get the window event
-  e.cancelBubble = true // IE Stop propagation
-  if (e.stopPropagation) e.stopPropagation() // Other Broswers
+  // if (!e) var e = window.event // Get the window event
+  // e.cancelBubble = true // IE Stop propagation
+  // if (e.stopPropagation) e.stopPropagation() // Other Broswers
+  if (winner) resetBoard()
   if (e.target.innerHTML === '') {
-    board[e.target.id[0]][e.target.id[1]] = player
+    board[e.target.id[0]][e.target.id[1]].player = player
+    changePlayer()
+    checkGameWin()
+    updateBoard()
   } else {
     // Handle not allowed
     // e.target.style.color = 'red'
   }
-  updateBoard()
-  checkGameWin()
-  changePlayer()
 }
 
 function changePlayer() {
@@ -39,73 +58,44 @@ function changePlayer() {
 
 function updateBoard() {
   board.forEach((row, i) =>
-    row.forEach(
-      (cell, j) => (document.getElementById(`${i}${j}`).innerHTML = cell)
-    )
+    row.forEach((cell, j) => {
+      document.getElementById(`${i}${j}`).innerHTML = cell?.player
+      if (cell?.player)
+        document.getElementById(`${i}${j}`).classList.remove('clickable')
+      else document.getElementById(`${i}${j}`).classList.add('clickable')
+      document.getElementById(`${i}${j}`).style.color = cell?.win
+        ? 'orange'
+        : 'black'
+    })
   )
+  if (winner !== '')
+    document.getElementById('winner').innerHTML = `The winner is ${winner}!`
+  else document.getElementById('winner').innerHTML = `Game in progress...`
 }
 
 function checkGameWin() {
-  // Check horizontal
-  for (let i = 0; i < 3; i++) {
+  winCombos.forEach((combo) => {
+    let cells = [
+      board[combo[0][0]][combo[0][1]],
+      board[combo[1][0]][combo[1][1]],
+      board[combo[2][0]][combo[2][1]],
+    ]
     if (
-      board[i][0] === board[i][1] &&
-      board[i][1] === board[i][2] &&
-      board[i][0] !== ''
+      cells[0]?.player === cells[1]?.player &&
+      cells[1]?.player === cells[2]?.player &&
+      cells[0]?.player
     ) {
-      for (let j = 0; j < 3; j++) {
-        document.getElementById(`${i}${j}`).style.color = 'yellow'
-      }
-      winner = board[i][0]
+      board[combo[0][0]][combo[0][1]].win = true
+      board[combo[1][0]][combo[1][1]].win = true
+      board[combo[2][0]][combo[2][1]].win = true
+      winner = cells[0]?.player
     }
-  }
-  // Check vertical
-  for (let i = 0; i < 3; i++) {
-    if (
-      board[0][i] === board[1][i] &&
-      board[1][i] === board[2][i] &&
-      board[0][i] !== ''
-    ) {
-      for (let j = 0; j < 3; j++) {
-        document.getElementById(`${j}${i}`).style.color = 'yellow'
-      }
-      winner = board[0][i]
-    }
-  }
-  // Check diagonal
-  if (
-    board[0][0] === board[1][1] &&
-    board[1][1] === board[2][2] &&
-    board[0][0] !== ''
-  ) {
-    document.getElementById('00').style.color = 'yellow'
-    document.getElementById('11').style.color = 'yellow'
-    document.getElementById('22').style.color = 'yellow'
-    winner = board[0][0]
-  }
-
-  if (
-    board[0][2] === board[1][1] &&
-    board[1][1] === board[2][0] &&
-    board[0][2] !== ''
-  ) {
-    document.getElementById('02').style.color = 'yellow'
-    document.getElementById('11').style.color = 'yellow'
-    document.getElementById('20').style.color = 'yellow'
-    winner = board[0][2]
-  }
-  if (winner !== '')
-    document.getElementById('winner').innerHTML = `The winner is ${winner}!`
+  })
 }
 
 function resetBoard() {
-  board = [
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', ''],
-  ]
+  board = initBoard()
   player = 'O'
   winner = ''
-  console.log(board)
   updateBoard()
 }
