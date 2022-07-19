@@ -22,8 +22,9 @@ const winCombos = [
 
 let board = initBoard()
 
-let player = 'O'
 let winner = ''
+let isNoughtsTurn = true
+let isStalemate = false
 
 // Setup event listeners
 
@@ -36,13 +37,11 @@ for (let i = 0; i < 3; i++) {
 document.getElementById('init').addEventListener('click', resetBoard)
 
 function clickTile(e) {
-  // if (!e) var e = window.event // Get the window event
-  // e.cancelBubble = true // IE Stop propagation
-  // if (e.stopPropagation) e.stopPropagation() // Other Broswers
-  if (winner) resetBoard()
+  if (winner || isStalemate) resetBoard()
   if (e.target.innerHTML === '') {
-    board[e.target.id[0]][e.target.id[1]].player = player
+    board[e.target.id[0]][e.target.id[1]].player = isNoughtsTurn ? 'O' : 'X'
     changePlayer()
+    checkStaleMate()
     checkGameWin()
     updateBoard()
   } else {
@@ -51,10 +50,7 @@ function clickTile(e) {
   }
 }
 
-function changePlayer() {
-  if (player === 'O') player = 'X'
-  else player = 'O'
-}
+const changePlayer = () => (isNoughtsTurn = !isNoughtsTurn)
 
 function updateBoard() {
   board.forEach((row, i) =>
@@ -68,12 +64,14 @@ function updateBoard() {
         : 'black'
     })
   )
-  if (winner !== '')
-    document.getElementById('winner').innerHTML = `The winner is ${winner}!`
-  else document.getElementById('winner').innerHTML = `Game in progress...`
+  const title = document.getElementById('title')
+  if (isStalemate) title.innerHTML = 'Stalemate!'
+  else if (winner !== '') title.innerHTML = `The winner is ${winner}!`
+  else title.innerHTML = `${isNoughtsTurn ? 'O' : 'X'}'s turn...`
 }
 
 function checkGameWin() {
+  if (isStalemate) return null
   winCombos.forEach((combo) => {
     let cells = [
       board[combo[0][0]][combo[0][1]],
@@ -85,17 +83,31 @@ function checkGameWin() {
       cells[1]?.player === cells[2]?.player &&
       cells[0]?.player
     ) {
-      board[combo[0][0]][combo[0][1]].win = true
-      board[combo[1][0]][combo[1][1]].win = true
-      board[combo[2][0]][combo[2][1]].win = true
+      cells[0].win = true
+      cells[1].win = true
+      cells[2].win = true
       winner = cells[0]?.player
     }
   })
 }
 
+function checkStaleMate() {
+  console.log('checking stalemate')
+  let stalemateCheck = true
+  board.forEach((row, i) =>
+    row.forEach((cell, j) => {
+      console.log(Boolean(cell.player))
+
+      if (!cell.player) stalemateCheck = false
+    })
+  )
+  isStalemate = stalemateCheck
+}
+
 function resetBoard() {
   board = initBoard()
-  player = 'O'
+  isNoughtsTurn = true
+  isStalemate = false
   winner = ''
   updateBoard()
 }
