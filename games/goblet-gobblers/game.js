@@ -1,14 +1,14 @@
 // Initialise variables
 
 const winCombos = [
-  ['1', '2', '3'],
-  ['4', '5', '6'],
-  ['7', '8', '9'],
-  ['1', '4', '7'],
-  ['2', '5', '8'],
-  ['3', '6', '9'],
-  ['1', '5', '9'],
-  ['3', '5', '7'],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ]
 
 let dragged = null
@@ -129,82 +129,44 @@ function placePiece(piece, tile) {
   piece.draggable = false
   tile.appendChild(piece)
   switchPlayers()
-  // if (winner || isStalemate) resetBoard()
-  // if (e.target.innerHTML === '') {
-  //   board[e.target.id[0]][e.target.id[1]].player = isNoughtsTurn ? 'O' : 'X'
-  //   changePlayer()
-  //   checkStaleMate()
-  //   checkGameWin()
-  //   updateBoard()
-  // } else {
-  // Handle not allowed
-  // e.target.style.color = 'red'
-  // }
-}
-
-function updateBoard() {
-  board.forEach((row, i) =>
-    row.forEach((cell, j) => {
-      document.getElementById(`${i}${j}`).innerHTML = cell?.player
-      if (cell?.player)
-        document.getElementById(`${i}${j}`).classList.remove('clickable')
-      else document.getElementById(`${i}${j}`).classList.add('clickable')
-      document.getElementById(`${i}${j}`).style.color = cell?.win
-        ? 'orange'
-        : 'black'
-    })
-  )
-  const title = document.getElementById('title')
-  if (isStalemate) title.innerHTML = 'Stalemate!'
-  else if (winner !== '') title.innerHTML = `The winner is ${winner}!`
-  else title.innerHTML = `${isNoughtsTurn ? 'O' : 'X'}'s turn...`
+  checkStaleMate()
+  checkGameWin()
 }
 
 function checkGameWin() {
-  if (isStalemate) return null
+  let gameArray = getGameArray()
   winCombos.forEach((combo) => {
-    let cells = [
-      board[combo[0][0]][combo[0][1]],
-      board[combo[1][0]][combo[1][1]],
-      board[combo[2][0]][combo[2][1]],
-    ]
     if (
-      cells[0]?.player === cells[1]?.player &&
-      cells[1]?.player === cells[2]?.player &&
-      cells[0]?.player
+      gameArray[combo[0]] === gameArray[combo[1]] &&
+      gameArray[combo[1]] === gameArray[combo[2]] &&
+      gameArray[combo[0]]
     ) {
-      cells[0].win = true
-      cells[1].win = true
-      cells[2].win = true
-      winner = cells[0]?.player
+      setWinCombo(combo)
+      winner = gameArray[combo[0]]
+      document.getElementById('title').innerText =
+        `${winner} IS THE WINNER!!!`.toUpperCase()
     }
   })
 }
 
 function checkStaleMate() {
-  console.log('checking stalemate')
-  let stalemateCheck = true
-  board.forEach((row, i) =>
-    row.forEach((cell, j) => {
-      console.log(Boolean(cell.player))
-
-      if (!cell.player) stalemateCheck = false
-    })
-  )
-  isStalemate = stalemateCheck
+  isStalemate = getGameArray().filter((color) => color === '').length === 0
 }
 
 function resetBoard() {
-  // board = initBoard()
-  // isNoughtsTurn = true
-  // isStalemate = false
-  // winner = ''
-  // updateBoard()
+  player = 'green'
+  isStalemate = false
+  winner = ''
+  document.getElementById('title').innerText = `${player}'s TURN`.toUpperCase()
+  clearBoard()
   resetTray(document.getElementById('pieces-tray-left'), 'green')
   resetTray(document.getElementById('pieces-tray-right'), 'purple')
 }
 
 function resetTray(tray, color) {
+  while (tray.lastChild) {
+    tray.lastChild.remove()
+  }
   for (let i = 1; i < 7; i++) {
     const piece = document.createElement('img')
     piece.src = `./assets/piece-happy.gif`
@@ -221,6 +183,14 @@ function resetTray(tray, color) {
     tray.appendChild(piece)
     // setInterval(() => handleSleep(piece), random(300, 10000))
   }
+}
+
+function clearBoard() {
+  document.querySelectorAll('.tile').forEach((tile) => {
+    while (tile.lastChild) {
+      tile.lastChild.remove()
+    }
+  })
 }
 
 function getSize(piece) {
@@ -243,9 +213,30 @@ function random(min, max) {
 function switchPlayers() {
   player = player === 'purple' ? 'green' : 'purple'
   document.getElementById('title').innerText = `${player}'s TURN`.toUpperCase()
-  document.querySelectorAll('.piece').forEach((piece) => {
-    console.log(piece.className)
-    console.log(piece.draggable)
-    piece.draggable = !piece.draggable
+  document
+    .querySelectorAll('.piece')
+    .forEach((piece) => (piece.draggable = !piece.draggable))
+}
+
+function getGameArray() {
+  let gameArray = []
+  document.querySelectorAll('.tile').forEach((tile) => {
+    let color = ''
+    let piece = tile.lastChild
+    if (piece) {
+      color = piece.classList[1]
+    }
+    gameArray.push(color)
+  })
+  return gameArray
+}
+
+function setWinCombo(combo) {
+  document.querySelectorAll('.tile').forEach((tile, i) => {
+    if (combo.includes(i)) {
+      let piece = tile.lastChild
+      piece.src = `./assets/piece-happy.gif`
+      piece.classList.add('piece-win')
+    }
   })
 }

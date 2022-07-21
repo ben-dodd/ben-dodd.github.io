@@ -108,6 +108,38 @@ h2:hover {
 .piece {
 }
 
+.piece-win {
+  animation-name: win;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.piece-win-purple {
+  animation-name: win-purple;
+}
+
+@keyframes win {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes win-purple {
+  0% {
+    filter: hue-rotate(180deg);
+  }
+  50% {
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    filter: hue-rotate(179deg);
+  }
+}
+
 .size-6 {
   width: 220px;
 }
