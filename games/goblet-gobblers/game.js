@@ -1,56 +1,146 @@
 // Initialise variables
 
-const initBoard = () =>
-  Array(3)
-    .fill()
-    .map(() =>
-      Array(3)
-        .fill()
-        .map(() => ({ player: '' }))
-    )
-
 const winCombos = [
-  ['00', '01', '02'],
-  ['10', '11', '12'],
-  ['20', '21', '22'],
-  ['00', '10', '20'],
-  ['01', '11', '21'],
-  ['02', '12', '22'],
-  ['00', '11', '22'],
-  ['02', '11', '20'],
+  ['1', '2', '3'],
+  ['4', '5', '6'],
+  ['7', '8', '9'],
+  ['1', '4', '7'],
+  ['2', '5', '8'],
+  ['3', '6', '9'],
+  ['1', '5', '9'],
+  ['3', '5', '7'],
 ]
 
-let board = initBoard()
-
+let dragged = null
 let winner = ''
-let isNoughtsTurn = true
+let player = 'green'
 let isStalemate = false
 
-// Setup event listeners
+let board = resetBoard()
 
-for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 3; j++) {
-    document.getElementById(`${i}${j}`).addEventListener('click', clickTile)
-  }
+// Setup event listeners
+document.querySelectorAll('.tile').forEach((tile) => {
+  tile.addEventListener('drop', handleDropOnTile)
+  tile.addEventListener('dragenter', handleDragEnter)
+  tile.addEventListener('dragleave', handleDragLeave)
+  tile.addEventListener('dragend', handleDragEnd)
+  tile.addEventListener('dragover', blockDraggable)
+})
+
+function blockDraggable(e) {
+  e.preventDefault()
+  e.stopPropagation()
 }
 
 document.getElementById('init').addEventListener('click', resetBoard)
 
-function clickTile(e) {
-  if (winner || isStalemate) resetBoard()
-  if (e.target.innerHTML === '') {
-    board[e.target.id[0]][e.target.id[1]].player = isNoughtsTurn ? 'O' : 'X'
-    changePlayer()
-    checkStaleMate()
-    checkGameWin()
-    updateBoard()
+function handleDragStart(e) {
+  this.style.opacity = 0
+  // e.target.src = `./assets/piece-scared.gif`
+  dragged = e.target
+}
+
+function handleDragEnd(e) {
+  this.style.opacity = 1
+}
+
+function handleDragOver(e) {
+  e.stopPropagation() // stops the browser from redirecting.
+  e.preventDefault()
+  return false
+}
+
+function handleDragEnter(e) {
+  e.stopPropagation() // stops the browser from redirecting.
+  this.classList.add('over')
+}
+
+function handleDragLeave(e) {
+  e.stopPropagation() // stops the browser from redirecting.
+  this.classList.remove('over')
+}
+
+function handleDropOnTile(e) {
+  e.stopPropagation() // stops the browser from redirecting.
+  // move dragged element to the selected drop target
+  handleDrop(dragged, e.target)
+}
+
+function handleDropOnPiece(e) {
+  e.stopPropagation() // stops the browser from redirecting.
+  // move dragged element to the selected drop target
+  let tile = e.target.parentNode
+  // Check it is being dragged to a tile
+  if (tile && tile.classList.value.includes('tile')) {
+    handleDrop(e.target, tile)
   } else {
-    // Handle not allowed
-    // e.target.style.color = 'red'
+    // Go back to tray
   }
 }
 
-const changePlayer = () => (isNoughtsTurn = !isNoughtsTurn)
+function handleDrop(piece, tile) {
+  tile.classList.remove('over')
+  if (tile.lastChild) {
+    // There is already a piece here
+    // Check it is smaller than the added piece
+    let defender = tile.lastChild
+    let attacker = dragged
+    if (getSize(attacker) > getSize(defender)) {
+      defender.remove()
+      placePiece(attacker, tile)
+    } else {
+      // Handle defeat
+    }
+  } else {
+    placePiece(piece, tile)
+  }
+}
+
+function handleHoverOverPiece(e) {
+  let defender = e.target
+  let attacker = dragged
+  if (getSize(attacker) > getSize(defender)) {
+    attacker.src = `assets/piece-happy.gif`
+    defender.src = `assets/piece-scared.gif`
+  } else {
+    attacker.src = `assets/piece-worried.gif`
+    defender.src = `assets/piece-happy.gif`
+  }
+}
+
+function handleLeavePiece(e) {
+  let defender = e.target
+  let attacker = dragged
+  if (getSize(attacker) > getSize(defender)) {
+    attacker.src = `assets/piece-happy.gif`
+    defender.src = `assets/piece-happy.gif`
+  } else {
+    attacker.src = `assets/piece-worried.gif`
+    defender.src = `assets/piece-sleepy.gif`
+  }
+}
+
+function handleClick(e) {
+  e.target.src = `./assets/piece-scared.gif`
+}
+
+function placePiece(piece, tile) {
+  piece.parentNode.removeChild(piece)
+  piece.draggable = false
+  tile.appendChild(piece)
+  switchPlayers()
+  // if (winner || isStalemate) resetBoard()
+  // if (e.target.innerHTML === '') {
+  //   board[e.target.id[0]][e.target.id[1]].player = isNoughtsTurn ? 'O' : 'X'
+  //   changePlayer()
+  //   checkStaleMate()
+  //   checkGameWin()
+  //   updateBoard()
+  // } else {
+  // Handle not allowed
+  // e.target.style.color = 'red'
+  // }
+}
 
 function updateBoard() {
   board.forEach((row, i) =>
@@ -105,9 +195,57 @@ function checkStaleMate() {
 }
 
 function resetBoard() {
-  board = initBoard()
-  isNoughtsTurn = true
-  isStalemate = false
-  winner = ''
-  updateBoard()
+  // board = initBoard()
+  // isNoughtsTurn = true
+  // isStalemate = false
+  // winner = ''
+  // updateBoard()
+  resetTray(document.getElementById('pieces-tray-left'), 'green')
+  resetTray(document.getElementById('pieces-tray-right'), 'purple')
+}
+
+function resetTray(tray, color) {
+  for (let i = 1; i < 7; i++) {
+    const piece = document.createElement('img')
+    piece.src = `./assets/piece-happy.gif`
+    piece.draggable = color === player
+    piece.className = `piece ${color} size-${i}`
+    piece.addEventListener('click', handleClick)
+    piece.addEventListener('dragstart', handleDragStart)
+    piece.addEventListener('dragend', handleDragEnd)
+    piece.addEventListener('drop', handleDropOnPiece)
+    piece.addEventListener('dragenter', handleHoverOverPiece)
+    piece.addEventListener('dragleave', handleLeavePiece)
+    piece.addEventListener('dragend', blockDraggable)
+    piece.addEventListener('dragover', blockDraggable)
+    tray.appendChild(piece)
+    // setInterval(() => handleSleep(piece), random(300, 10000))
+  }
+}
+
+function getSize(piece) {
+  return parseInt(piece.className.slice(-1))
+}
+
+// clearInterval(timer)
+// timer = setInterval(handleMole, random(200, 3000))
+
+function handleSleep(piece) {
+  // console.log(piece)
+  piece.src = `./assets/piece-sleepy.gif`
+}
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min
+}
+// const audio = new Audio('whack-audio.wav')
+
+function switchPlayers() {
+  player = player === 'purple' ? 'green' : 'purple'
+  document.getElementById('title').innerText = `${player}'s TURN`.toUpperCase()
+  document.querySelectorAll('.piece').forEach((piece) => {
+    console.log(piece.className)
+    console.log(piece.draggable)
+    piece.draggable = !piece.draggable
+  })
 }

@@ -139,7 +139,7 @@ div.big-key:hover {
 }
 
 .key {
-  color: hsl(130, 30%, 74%)
+  color: hsl(130, 30%, 74%);
   width: 100%;
   box-sizing: border-box;
   border: hsl(270, 3%, 87%) solid 2px;
