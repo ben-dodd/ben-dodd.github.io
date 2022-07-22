@@ -35,7 +35,8 @@ function blockDraggable(e) {
 document.getElementById('init').addEventListener('click', resetBoard)
 
 function handleDragStart(e) {
-  this.style.opacity = 0
+  this.style.opacity = 0.5
+  e.dataTransfer.setDragImage(e.target, 0, 0)
   // e.target.src = `./assets/piece-scared.gif`
   dragged = e.target
 }
@@ -100,10 +101,10 @@ function handleHoverOverPiece(e) {
   let defender = e.target
   let attacker = dragged
   if (getSize(attacker) > getSize(defender)) {
-    attacker.src = `assets/piece-happy.gif`
+    attacker.src = `./assets/piece-happy.gif`
     defender.src = `assets/piece-scared.gif`
   } else {
-    attacker.src = `assets/piece-worried.gif`
+    attacker.src = `./assets/piece-worried.gif`
     defender.src = `assets/piece-happy.gif`
   }
 }
@@ -112,10 +113,10 @@ function handleLeavePiece(e) {
   let defender = e.target
   let attacker = dragged
   if (getSize(attacker) > getSize(defender)) {
-    attacker.src = `assets/piece-happy.gif`
+    attacker.src = `./assets/piece-happy.gif`
     defender.src = `assets/piece-happy.gif`
   } else {
-    attacker.src = `assets/piece-worried.gif`
+    attacker.src = `./assets/piece-worried.gif`
     defender.src = `assets/piece-sleepy.gif`
   }
 }

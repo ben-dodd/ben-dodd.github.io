@@ -105,8 +105,9 @@ h2:hover {
   padding: auto;
 }
 
-.piece {
-}
+/* .piece {
+  filter: drop-shadow(20px -5px 20px rgba(34, 34, 34, 0.401));
+} */
 
 .piece-win {
   animation-name: win;
