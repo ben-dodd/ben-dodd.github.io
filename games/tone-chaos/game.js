@@ -62,7 +62,6 @@ function createRandomVoice(synth) {
   synth.modulation.sustain = random(0, 100) / 100
   // Change modulation.release
   synth.modulation.release = random(0, 300) / 100
-  console.log(synth)
 }
 
 document.querySelectorAll('.key').forEach((key, i) => {
