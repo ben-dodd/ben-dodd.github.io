@@ -114,21 +114,12 @@ header {
 }
 
 .piano {
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% 30% 1fr 1fr;
   flex-wrap: wrap;
   height: 100%;
-  width: 100%;
-}
-
-.piano > div {
-  flex: 25%;
-}
-
-.big-key {
-}
-
-div.big-key:hover {
-  background-color: hsl(130, 33%, 85%);
+  /* width: min(100%, 1200px); */
+  margin: auto;
 }
 
 .fine-piano {
@@ -139,14 +130,24 @@ div.big-key:hover {
 }
 
 .key {
-  color: hsl(130, 30%, 74%);
   width: 100%;
   box-sizing: border-box;
   border: hsl(270, 3%, 87%) solid 2px;
+  background-color: hsl(129, 96%, 68%);
   flex: 50%;
   color: #f7f7f7;
+  cursor: pointer;
+}
+
+#scale-name {
+  color: black;
+  /* position: absolute; */
+}
+
+#instructions {
+  font-weight: 200;
 }
 
 div.key:hover {
-  background-color: hsl(281, 30%, 94%);
+  background-color: hsl(280, 100%, 75%);
 }
